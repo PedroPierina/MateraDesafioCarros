@@ -1,18 +1,28 @@
 package com.matera.desafioCarros;
 
-public enum Cidades {
-	CAMPINAS(1.30), 
-	SUMARE(1.20),
-	SAO_PAULO(1.50);
-	
-	private double valorImposto;
+import com.matera.calculadorasCidades.Calculadora;
+import com.matera.calculadorasCidades.Campinas;
+import com.matera.calculadorasCidades.SaoPaulo;
+import com.matera.calculadorasCidades.Sumare;
 
-	Cidades(double valorImposto){
-		this.valorImposto = valorImposto;
+public enum Cidades {
+	CAMPINAS(new Campinas()), 
+	SUMARE(new Sumare()),
+	SAO_PAULO(new SaoPaulo());
+	
+	private Calculadora calculadora;
+
+	Cidades(Calculadora calculadora){
+		this.calculadora = calculadora;
 	}
+
+	public Calculadora getCalculadora() {
+		return calculadora;
+	}
+	
 	
 //	Por porcentagem, posso criar outro metodo que segue outro padrão de calculo
-	int calcularImposto(int valorBruto){
-		return (int)(valorBruto * this.valorImposto);
-	}
+//	int calcularImposto(int valorBruto){
+//		return (int)(valorBruto * this.calculadora);
+//	}
 }

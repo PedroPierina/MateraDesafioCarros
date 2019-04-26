@@ -2,7 +2,7 @@ package com.matera.desafioCarros;
 
 import java.util.List;
 
-public class Carro {
+public class Carro implements Taxavel{
 	private String nome;
 	private String fabricante;
 	private int valorBruto;
@@ -11,20 +11,14 @@ public class Carro {
 	private Cidades cidade;
 
 	public Carro(String nome, String fabricante, List<Peca> pecas, Cidades cidade) {
-		super();
 		this.nome = nome;
 		this.fabricante = fabricante;
 		this.cidade = cidade;
 		
-		for (Peca i : pecas) {
-			this.valorBruto += i.getValorBruto();
-		}
-
-		for (Peca i : pecas) {
-			this.valorLiquido += i.getValorLiquido();
-		}
+		pecas.forEach(p -> this.valorLiquido += p.getValorLiquido());
 		
-		this.valorLiquido = this.cidade.calcularImposto(this.valorLiquido);
+		this.valorBruto = this.valorLiquido;
+		this.valorLiquido = this.cidade.getCalculadora().calcularImposto(this);
 		this.setPecas(pecas);
 	}
 

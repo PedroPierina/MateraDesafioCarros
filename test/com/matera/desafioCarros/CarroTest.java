@@ -25,5 +25,23 @@ public class CarroTest {
 		
 		Assert.assertEquals(13988, hb20.getValorLiquido());
 	}
+	
+	@Test
+	public void testValorVolante(){
+		Peca volante = new Peca("Volante", "Hyundai", 200, Cidades.CAMPINAS);
+		Assert.assertEquals(260, volante.getValorLiquido());
+	}
+	
+	@Test
+	public void testValorMotor(){
+		Peca motor = new Peca("Motor", "Hyundai", 5000, Cidades.SUMARE);
+		Assert.assertEquals(6000, motor.getValorLiquido());
+	}
+	
+	@Test
+	public void testValorCambio(){
+		Peca cambio = new Peca("Cambio", "Hyundai", 3000, Cidades.SAO_PAULO);
+		Assert.assertEquals(4500, cambio.getValorLiquido());
+	}
 
 }

@@ -13,7 +13,7 @@ public class Peca implements Taxavel{
 		this.fabricante = fabricante;
 		this.valorBruto = valorBruto;
 		this.cidade = cidade;
-		this.valorLiquido = this.cidade.calcularImposto(this.valorBruto);
+		this.valorLiquido = this.cidade.getCalculadora().calcularImposto(this);
 	}
 	
 	public String getNome() {
@@ -28,7 +28,7 @@ public class Peca implements Taxavel{
 	public void setFabricante(String fabricante) {
 		this.fabricante = fabricante;
 	}
-	public double getValorBruto() {
+	public int getValorBruto() {
 		return valorBruto;
 	}
 	public void setValorBruto(int valorBruto) {
@@ -40,21 +40,6 @@ public class Peca implements Taxavel{
 	
 	public int getValorLiquido() {
 		return valorLiquido;
-	}
-
-	@Override
-	public int impostoCampinas() {
-		return this.valorLiquido = (int) (this.valorBruto * 1.30);
-	}
-	
-	@Override
-	public int impostoSumare() {
-		return this.valorLiquido = (int) (this.valorBruto * 1.20);
-	}
-	
-	@Override
-	public int impostoSP() {
-		return this.valorLiquido = (int) (this.valorBruto * 1.50);
 	}
 	
 }
