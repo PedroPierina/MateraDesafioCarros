@@ -1,7 +1,9 @@
 package com.matera.calculadorasCidades;
 
+import java.math.BigDecimal;
+
 import com.matera.desafioCarros.Taxavel;
 
 public interface Calculadora {
-	int calcularImposto(Taxavel produto);
+	BigDecimal calcularImposto(Taxavel produto);
 }

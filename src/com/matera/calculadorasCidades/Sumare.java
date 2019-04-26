@@ -1,12 +1,15 @@
 package com.matera.calculadorasCidades;
 
+import java.math.BigDecimal;
+
 import com.matera.desafioCarros.Taxavel;
 
 public class Sumare implements Calculadora {
 
 	@Override
-	public int calcularImposto(Taxavel produto) {
-		return (int)(produto.getValorBruto() * 1.20);
+	public BigDecimal calcularImposto(Taxavel produto) {
+		BigDecimal imposto = new BigDecimal("1.20");
+		return produto.getValorBruto().multiply(imposto);
 	}
 
 }

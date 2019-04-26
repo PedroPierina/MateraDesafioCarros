@@ -1,12 +1,13 @@
 package com.matera.desafioCarros;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class Carro implements Taxavel{
 	private String nome;
 	private String fabricante;
-	private int valorBruto;
-	private int valorLiquido;
+	private BigDecimal valorBruto;
+	private BigDecimal valorLiquido = new BigDecimal(0);
 	private List<Peca> pecas;
 	private Cidades cidade;
 
@@ -15,7 +16,7 @@ public class Carro implements Taxavel{
 		this.fabricante = fabricante;
 		this.cidade = cidade;
 		
-		pecas.forEach(p -> this.valorLiquido += p.getValorLiquido());
+		pecas.forEach(p -> this.valorLiquido = this.valorLiquido.add(p.getValorLiquido()));
 		
 		this.valorBruto = this.valorLiquido;
 		this.valorLiquido = this.cidade.getCalculadora().calcularImposto(this);
@@ -38,11 +39,11 @@ public class Carro implements Taxavel{
 		this.fabricante = fabricante;
 	}
 
-	public int getValorBruto() {
+	public BigDecimal getValorBruto() {
 		return valorBruto;
 	}
 	
-	public int getValorLiquido(){
+	public BigDecimal getValorLiquido(){
 		return valorLiquido;
 	}
 
